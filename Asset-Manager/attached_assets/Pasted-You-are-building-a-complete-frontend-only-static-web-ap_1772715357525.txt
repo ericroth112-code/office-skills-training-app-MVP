@@ -1,0 +1,702 @@
+You are building a complete **frontend-only static web app MVP** for a school training application.
+The output must be a **working web app**, not just a description.
+
+# PROJECT TITLE
+
+Office Skills Training App
+
+# PROJECT PURPOSE
+
+Build a static training web app that helps **Don Bosco Erdem TVET School** students of the **Office Administration program (1st to 3rd year)** study, review, and practice lessons.
+
+# IMPORTANT CONSTRAINTS
+
+This is a strict MVP with hard limits:
+
+1. **No backend**
+2. **No database**
+3. **No server-side authentication**
+4. **No dynamic site**
+5. **No paid tools or services**
+6. **Everything must work as a static frontend web app**
+7. User session and progress must be stored only on the **client side** using **localStorage**
+8. The app must be simple enough to finish within **7 days**
+9. The app must look polished enough for a school presentation/demo
+10. Use **mock data / local JSON / local JS objects** for lessons and exercises
+
+# TECH DIRECTION
+
+Build this as a clean static web app using one of these options:
+
+* Preferred: **React + Vite**
+* Allowed: plain HTML/CSS/JavaScript if simpler
+  Choose the option that gives the most polished result quickly.
+
+Use:
+
+* Responsive layout
+* Clean modern UI
+* Fast loading
+* Simple state management
+* Easy-to-edit content structure
+
+# PRIMARY USER FLOW
+
+Landing Page
+→ Auth Page
+→ Dashboard
+→ Lesson Page
+→ Exercise Page
+→ Result Page
+→ Next Action
+
+# CORE FEATURES
+
+The app must include these pages/modules:
+
+1. Landing Page (Public Home)
+2. Auth Page (Sign Up / Log In UI)
+3. Dashboard (Main Home)
+4. Lesson Page (Topic List + Exercise List)
+5. Exercise Page (Exercise Player)
+6. Result Page (Score + Feedback)
+7. Next Action Block (Back / Next / Retry)
+
+---
+
+# GLOBAL APP RULES
+
+## 1. Authentication rule
+
+Because there is no backend, do NOT implement real Google, Apple, or server auth.
+
+Instead:
+
+* Show auth provider buttons for UI polish
+* But actual working login must be:
+
+  * “Continue with email” opens a simple local form
+  * User enters name
+  * Optional email field can be included
+  * Save user info to localStorage
+  * Redirect to Dashboard
+
+Also:
+
+* Add Logout button
+* Logout clears local session from localStorage
+
+## 2. Progress rule
+
+Store these in localStorage:
+
+* current user name
+* login state
+* lesson progress
+* completed exercises
+* score history
+* current status labels
+
+## 3. Content rule
+
+Use editable local mock content.
+Create sample lessons and sample exercises so the app is demo-ready without backend.
+
+## 4. UI rule
+
+The UI must feel modern, academic, and clean.
+Do NOT make it childish or overly playful.
+Use a light theme.
+Good whitespace.
+Rounded cards.
+Subtle shadows.
+Clear typography.
+Responsive layout for desktop and mobile.
+
+---
+
+# PAGE REQUIREMENTS
+
+## PAGE 1 — LANDING PAGE
+
+### Goal
+
+Introduce the app, explain value, and guide the user into the app.
+
+### Modules
+
+1. **Navigation Bar**
+
+   * Full width
+   * Sticky top
+   * Left: logo + app name
+   * Right: Sign In button
+   * Light background
+
+2. **Logo / Brand Block**
+
+   * Small app icon
+   * Text: “Office Skills Training App”
+
+3. **Sign In Button**
+
+   * Primary style
+   * Redirect to Auth page
+
+4. **Hero Section**
+
+   * Center aligned
+   * Spacious layout
+
+5. **Institution Badge / Label**
+
+   * Small pill badge above headline
+   * Text: “ДОН БОСКО ЭРДЭМ МЭРГЭЖЛИЙН БОЛОВСРОЛЫН СУРГУУЛЬ”
+
+6. **Main Headline**
+
+   * Text: “Оффис дээр ажиллах мэдлэг, ур чадварыг эзэмш”
+   * Bold
+   * Large
+   * Center aligned
+
+7. **Supporting Description**
+
+   * Short explanatory text
+   * Easy to read
+
+8. **Primary CTA Button**
+
+   * Text: “Сурч эхлэх”
+   * Leads to Auth page
+   * Hover effect
+
+9. **CTA Supporting Text**
+
+   * Text: “Бүх сурагчдад үнэгүй”
+
+10. **Feature Section Title**
+
+* Text: “Хийх дасгалууд”
+
+11. **Feature Grid**
+
+* Responsive grid
+* 4 cards on desktop if space allows
+
+12. **Feature Cards**
+
+* “Тодорхойлолт эвлүүлэх”
+* “Би хэн бэ?”
+* “Хуулийн кейс”
+* “Баримт бичгийн бүрдэл”
+
+13. **Footer**
+
+* Minimal centered text
+* Text: “Office Skills Training App — Дон Боско мэргэжлийн боловсролын сургууль”
+
+---
+
+## PAGE 2 — AUTH PAGE
+
+### Goal
+
+Create a polished login/signup experience, but only local login actually works.
+
+### Modules
+
+1. Full-page light background
+2. Centered auth card
+3. Small app icon
+4. Title: “Sign up for Office Skill Builder”
+5. Small URL preview under title
+6. Provider button group:
+
+   * Continue with Google
+   * Continue with Apple
+   * Continue with email
+7. “View more options” link
+8. Legal footer with Terms / Privacy text
+
+### Functional rule
+
+* Google and Apple buttons may show “Demo only” toast or disabled-note
+* **Continue with email** must work
+* Clicking email opens a local form:
+
+  * Name (required)
+  * Email (optional)
+  * Button: Continue
+* Save user to localStorage
+* Redirect to Dashboard
+
+---
+
+## PAGE 3 — DASHBOARD
+
+### Goal
+
+Main learning home page after login.
+
+### Modules
+
+1. **Navigation Bar**
+
+   * Left: logo + “Office Skills Training”
+   * Small secondary label: “Дон Боско Эрдэм”
+   * Right: user block + logout icon/button
+
+2. **User Profile Block**
+
+   * Avatar with initials
+   * Username from localStorage
+
+3. **Dashboard Header**
+
+   * Title: “Welcome back, {USER_NAME}!”
+   * Subtitle: “Доорх хичээлээс сонгож дасгалаа эхлүүлнэ үү.”
+
+4. **Lesson Grid Container**
+
+   * Responsive card grid
+   * 2-column desktop layout if suitable
+
+5. **Lesson Cards**
+   Create at least these:
+
+   * Office Terms & Definitions
+   * Тодорхойлолт эвлүүлэх
+   * Би хэн бэ?
+   * Хуулийн кейс
+   * Баримт бичгийн бүрдэл
+
+Each card must contain:
+
+* icon
+* title
+* short description
+* status label
+* arrow icon
+
+Statuses:
+
+* Not started yet
+* In progress
+* Completed
+
+Clicking a lesson card opens that lesson page.
+
+---
+
+## PAGE 4 — LESSON PAGE
+
+### Goal
+
+Show the selected lesson overview, learning items, and exercises.
+
+### Modules
+
+1. Top navigation bar
+
+   * Back arrow
+   * Lesson title
+
+2. Page title block
+
+   * Current lesson name
+
+3. Lesson description
+
+   * Short explanation of what student will learn
+
+4. Lesson progress row
+
+   * x of y exercises completed
+   * progress bar or percent
+
+5. Section label: “Хичээл”
+
+6. Lesson list container
+
+   * lesson content items
+
+7. Lesson item cards
+
+   * title
+   * short description
+   * status label
+   * navigation arrow
+
+8. Section label: “Дасгал”
+
+9. Exercise list container
+
+10. Exercise item cards
+
+* exercise number badge
+* title
+* exercise type label
+* status
+* navigation arrow
+
+Exercise type label examples:
+
+* Definition Matching
+* Identity Guess
+* Case Selection
+* Component Matching
+
+Clicking an exercise opens Exercise Page.
+
+---
+
+## PAGE 5 — EXERCISE PAGE
+
+### Goal
+
+Run the actual interactive exercise.
+
+### Global requirements
+
+* Show clear instructions
+* Show question/content area
+* Show answer interaction area
+* Show submit/check action
+* Show retry/reset action
+* Show progress indicator
+* After submitting, go to Result page
+
+### Required exercise types
+
+Implement at least **2 exercise types fully working**.
+If possible, scaffold all 4.
+Priority order:
+
+### Exercise Type A — Definition Matching / Sentence Ordering
+
+This is the highest priority.
+
+Behavior:
+
+* A long definition is split into 2–3 sentence chunks
+* Chunks appear in a **selection bank**
+* User clicks chunks to place them into the **answer board**
+* If user clicks a placed chunk again, it returns to the bank
+* User can reorder by removing and placing again, or via move buttons if easier
+* On submit, compare with the correct order
+* Then show result
+
+### Exercise Type B — “Би хэн бэ?” / Identity Guess
+
+Behavior:
+
+* Show a clue/description
+* Show multiple choices
+* User picks the correct answer
+* Submit
+* Result page shows correct/incorrect with explanation
+
+### Exercise Type C — Legal Case
+
+Optional if time allows
+
+* Show short scenario
+* Multiple choice or category selection
+
+### Exercise Type D — Document Components
+
+Optional if time allows
+
+* Match a document with its correct components
+
+### Important UX behavior
+
+* The user must always understand:
+
+  * what the task is
+  * what they selected
+  * whether they can change it
+* Add instruction text near the top
+
+---
+
+## PAGE 6 — RESULT PAGE
+
+### Goal
+
+Show score and feedback immediately after an exercise.
+
+### Modules
+
+1. Result title
+2. Score display
+3. Correct/incorrect summary
+4. Feedback text
+5. Explanation block
+6. Next Action buttons
+
+### Logic
+
+* Save completion state
+* Save score
+* Update lesson progress
+* If exercise was retried, overwrite or keep latest result clearly
+
+Feedback should be friendly, simple, and readable.
+
+---
+
+## PAGE 7 — NEXT ACTION BLOCK
+
+### Goal
+
+Guide the user to the next step after an exercise.
+
+### Buttons
+
+1. Back to Dashboard
+2. Back to Lesson
+3. Retry
+4. Next Exercise
+
+### Rules
+
+* If next exercise exists, enable Next Exercise
+* If last exercise, Next Exercise can become disabled or route back to Lesson/Dashboard
+* Retry resets current exercise state
+
+---
+
+# DATA MODEL REQUIREMENTS
+
+Use local mock data in a structured and easy-to-edit way.
+
+Create data structures for:
+
+* lessons
+* lesson items
+* exercises
+* questions
+* options
+* answers
+* explanations
+
+Suggested structure example:
+
+* lessonId
+* lessonTitle
+* lessonDescription
+* lessonItems[]
+* exercises[]
+
+  * exerciseId
+  * title
+  * type
+  * instructions
+  * question
+  * options
+  * correctAnswer
+  * explanation
+
+For sentence ordering exercises, structure example:
+
+* chunks: []
+* correctOrder: []
+
+Create enough sample data to make the app presentation-ready.
+
+---
+
+# SAMPLE CONTENT REQUIREMENTS
+
+Add realistic Mongolian sample data for at least:
+
+* 5 lessons
+* each lesson with short description
+* each lesson with 1–2 lesson content items
+* each lesson with 1–3 exercises
+
+At minimum, make sure these lesson titles exist:
+
+1. Office Terms & Definitions
+2. Тодорхойлолт эвлүүлэх
+3. Би хэн бэ?
+4. Хуулийн кейс
+5. Баримт бичгийн бүрдэл
+
+Also make sure at least:
+
+* 2 sentence-ordering exercises
+* 2 multiple-choice exercises
+
+The content does not need to be academically perfect, but it must be coherent and presentation-ready.
+
+---
+
+# DESIGN REQUIREMENTS
+
+Use a modern academic web-app style:
+
+* light background
+* white cards
+* subtle shadows
+* rounded corners
+* clear buttons
+* professional typography
+* responsive layout
+
+Suggested visual tone:
+
+* school + productivity + modern training dashboard
+
+Need:
+
+* hover effects
+* clean icons
+* readable spacing
+* polished buttons
+* consistent color system
+
+---
+
+# FILE STRUCTURE REQUIREMENTS
+
+Organize the project cleanly.
+
+If using React + Vite, create a structure similar to:
+
+* src/
+
+  * components/
+  * pages/
+  * data/
+  * utils/
+  * styles/
+  * App.jsx
+  * main.jsx
+
+Suggested reusable components:
+
+* Navbar
+* LessonCard
+* ProgressBar
+* ExerciseCard
+* AuthCard
+* ResultSummary
+* NextActionButtons
+
+Also add utility helpers for:
+
+* localStorage session handling
+* progress calculations
+* exercise scoring
+
+---
+
+# ROUTING REQUIREMENTS
+
+Use client-side routing if using React:
+
+* /
+* /auth
+* /dashboard
+* /lesson/:lessonId
+* /exercise/:lessonId/:exerciseId
+* /result/:lessonId/:exerciseId
+
+If simpler, a single-page state-based navigation is allowed, but route-based navigation is preferred.
+
+---
+
+# LOCAL STORAGE REQUIREMENTS
+
+Create helper functions for:
+
+* saveUser()
+* getUser()
+* logoutUser()
+* saveProgress()
+* getProgress()
+* saveExerciseResult()
+* getExerciseResult()
+
+Use localStorage keys consistently.
+
+---
+
+# ERROR / EMPTY STATE REQUIREMENTS
+
+Handle these gracefully:
+
+1. User not logged in → redirect to auth
+2. Invalid lesson/exercise id → show simple error view
+3. No progress yet → show “Not started yet”
+4. Missing data → show safe fallback UI, do not crash
+
+---
+
+# ACCEPTANCE CRITERIA
+
+The project is only complete if all of the following work:
+
+1. Landing page renders correctly
+2. Auth page works with local login
+3. Username is saved and shown on dashboard
+4. Dashboard lists all lesson cards
+5. Clicking a lesson opens the lesson page
+6. Lesson page shows lesson items and exercise list
+7. At least 2 exercise types work correctly
+8. Exercise can be submitted
+9. Result page appears after submission
+10. Progress/status is saved in localStorage
+11. Logout works
+12. App is responsive
+13. App looks polished enough for a presentation
+14. App runs without backend
+15. No fake backend dependency exists
+
+---
+
+# DEVELOPMENT PRIORITY ORDER
+
+Build in this order:
+
+1. App shell + routing
+2. Landing page
+3. Auth page with local login
+4. Dashboard
+5. Lesson page
+6. Exercise page for sentence-ordering
+7. Exercise page for multiple-choice
+8. Result page
+9. Next action logic
+10. localStorage persistence
+11. UI polish
+12. responsive improvements
+
+---
+
+# IMPORTANT DELIVERY INSTRUCTION
+
+Do not just explain the approach.
+Generate the actual working codebase.
+
+If some content is missing, create reasonable mock content and keep it easy to edit later.
+
+If a feature is too complex for MVP, choose the simplest working implementation that respects these constraints:
+
+* static
+* frontend only
+* localStorage based
+* demo-ready
+* visually polished
+
+At the end, provide:
+
+1. the complete working app code
+2. the file structure
+3. brief setup/run instructions
+4. where to edit lesson and exercise content later
+
+Start building now.
